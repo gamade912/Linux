@@ -16,8 +16,20 @@ sudo yum install java-ll-open-devel -y
 sudo yum install java-11-openjdk -y 
  
 #SET DEFAULT JAVA VERSION
-sudo alternatives --config java <<< '2'
- 
+echo "REMOVING OLD JAVA 8 SYMLINK...."
+sudo unlink /usr/lib/jvm/java
+
+echo "LINKING NEW JAVA...."
+echo "===================="
+sudo ln -s /usr/lib/jvm/new_java /usr/lib/jvm/java
+
+echo "UPDATING ALTERNATIVES FOR JAVA AND JAVA COMPILER"
+echo "================================================"
+sudo update-alternatives --set java /usr/lib/jvm/new_java/bin/java
+sudo update-alternatives --set javac /usr/lib/jvm/new_java/bin/javac
+
+echo "YOU ARE NOW SET YOUR CURRENT VERSION IS........"
+echo "==============================================="
 #CHECK VERSION
 java -version
  

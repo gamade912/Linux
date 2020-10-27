@@ -1,3 +1,29 @@
-#!/usr/bin/bash
-#THIS SCRIPT UPGRADES JAVA
+#!/bin/bash
+#THIS SCRIPT UPGRADES JAVA!!!!
 
+#PROMPT USER ON UPDATING JAVA OR NOT
+echo "WOULD YOU LIKE TO UPDATE YOUR JAVA VERSION? PLEASE TYPE YES OR NO TO CONTINUE. "
+read USERINPUT
+if [ "$USERINPUT" == "YES" ] || [ "$USERINPUT" == "yes" ]; then 
+  echo "OK INSTALLING NEW VERSION OF JAVA NOW..."
+  echo "========================================"
+  
+#UPDATE YUM REPO
+sudo yum update -y
+ 
+#INSTALL JAVA JDK 11
+sudo yum install java-ll-open-devel -y
+sudo yum install java-11-openjdk -y
+ 
+#SET DEFAULT JAVA VERSION
+sudo alternatives --config java <<< '2'
+ 
+#CHECK VERSION
+java -version
+ 
+elif
+ [ "$USERINPUT" == "NO" ] || [ "$USERINPUT" == "no" ]; then
+  echo "OK ENJOY THE REST OF YOUR DAY. "
+else
+  echo "YOU DID NOT FOLLOW DIRECTIONS...GOODBYE!!!!"
+fi

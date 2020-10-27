@@ -13,7 +13,7 @@ sudo yum update -y
  
 #INSTALL JAVA JDK 11
 sudo yum install java-ll-open-devel -y
-sudo yum install java-11-openjdk -y
+sudo yum install java-11-openjdk -y 
  
 #SET DEFAULT JAVA VERSION
 sudo alternatives --config java <<< '2'
